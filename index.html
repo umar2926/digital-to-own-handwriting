@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Image and Display Extracted Characters</title>
+</head>
+<body>
+    <h1>Upload Image</h1>
+    <form method="POST" enctype="multipart/form-data" action="{{ url_for('upload_file') }}">
+        <input type="file" name="file" accept=".jpg, .jpeg, .png">
+        <input type="submit" value="Upload">
+    </form>
+
+    {% if show_input %}
+    <hr>
+    <img src="{{ url_for('static', filename='characters/' + character_image) }}" alt="Character Image">
+    <form method="POST" action="{{ url_for('submit_character') }}">
+        <label for="character">Enter the character:</label>
+        <input type="text" id="character" name="character" autofocus>
+        <input type="submit" value="Submit">
+    </form>
+    {% endif %}
+
+    {% if message %}
+    <p>{{ message }}</p>
+    {% endif %}
+
+    {% if all_submitted %}
+    <hr>
+    <h1>Recognize Handwritten Characters</h1>
+    <form method="POST" action="{{ url_for('recognize_character') }}">
+        <label for="user_input">Enter text in handwritten form:</label>
+        <input type="text" id="user_input" name="user_input" autofocus>
+        <input type="submit" value="Recognize">
+    </form>
+    {% endif %}
+
+    {% if recognized_images %}
+    <hr>
+    <h2>Recognized Images:</h2>
+    <div>
+        {% for image in recognized_images %}
+        {% if image == " " %}
+        <span>&nbsp;</span> <!-- Display space as non-breaking space -->
+        {% else %}
+        <img src="{{ url_for('static', filename='characters/' + image) }}" alt="Recognized Character Image">
+        {% endif %}
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if recognized_character %}
+    <hr>
+    <h2>Recognized Character:</h2>
+    <p>{{ recognized_character }}</p>
+    {% endif %}
+</body>
+</html>

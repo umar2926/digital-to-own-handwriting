@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extracted Characters</title>
+    <style>
+        .character {
+            display: inline-block;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Extracted Characters</h1>
+    {% if character_images %}
+        {% for image_path in character_images %}
+            <div class="character">
+                <img src="{{ url_for('static', filename=image_path) }}" alt="Character Image">
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No characters found.</p>
+    {% endif %}
+    <br>
+    <a href="{{ url_for('upload_file') }}">Upload Another Image</a>
+</body>
+</html>
