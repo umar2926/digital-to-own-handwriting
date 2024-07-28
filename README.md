@@ -10,7 +10,7 @@ Background Removal: Extracted characters are saved with their backgrounds remove
 
 # Installation
 Clone the repository:
-git clone https://github.com/yourusername/handwritten-character-recognition.git
+git clone https://github.com/umar2926/digital-to-own-handwriting.git
 cd handwritten-character-recognition
 
 Install dependencies:
