@@ -24,12 +24,18 @@ python app.py
 
 # Usage
 Navigate to http://127.0.0.1:5000/ in your web browser.
+
 Upload an image containing handwritten text.
+
 Annotate the extracted characters.
+
 Enter text in the recognition form to see the recognized characters.
 
 # Folder Structure
 app.py: Main application file.
+
 templates/: HTML templates for rendering web pages.
+
 static/characters/: Directory for saving extracted character images.
+
 uploads/: Directory for temporarily storing uploaded images.
